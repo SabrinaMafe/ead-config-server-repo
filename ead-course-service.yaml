@@ -7,7 +7,7 @@ spring:
   application:
     name: ead-course-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/ead-course-v2
+    url:  jdbc:postgresql://localhost:5432/ead-course-v2
     username: postgres
     password: banco123
   jpa:
@@ -23,13 +23,13 @@ spring:
     ansi:
       enabled: Always
   rabbitmq:
-    addresses: amqps://pvkzowfr:MlVr8MMxhLPfv5PfGm3PkGAzYv4mK8Lg@shark.rmq.cloudamqp.com/pvkzowfr
+    addresses: amqps://oqaevxaf:6KU7WK_x0k2Et0CwgwlOOdf95NAR4uPG@woodpecker.rmq.cloudamqp.com/oqaevxaf
 
 
 logging:
   level:
     com.ead: TRACE
-    root: info
+    root: INFO
     org.springframework.web: DEBUG
     org.hibernate: INFO
 
@@ -39,10 +39,13 @@ ead:
       authuser: 'http://ead-authuser-service/ead-authuser'
   broker:
     exchange:
-      userEvent: ead.userevent
+      userEventExchange: ead.userevent
+      notificationCommandExchange: ead.notificationcommand
     queue:
       userEventQueue:
         name: ead.userevent.ms.course
+    key:
+      notificationCommandKey: ms.notification
 
 management:
   endpoints:
